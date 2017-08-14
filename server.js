@@ -11,6 +11,13 @@ var config = {
     password: process.env.DB_PASSWORD
 };
 
+var app = express();
+app.use(morgan('combined'));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
   //res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -21,13 +28,6 @@ app.get('/test-db', function (req, res) {
           res.send(JSON.stringify(result));
       }
   });
-});
-
-var app = express();
-app.use(morgan('combined'));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/ui/style.css', function (req, res) {
