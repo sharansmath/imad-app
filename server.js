@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+use Pool = require('pg').Pool;
 
 var app = express();
 app.use(morgan('combined'));
