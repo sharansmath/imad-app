@@ -11,7 +11,6 @@ var config = {
     password: process.env.DB_PASSWORD
 };
 
-
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
   //res.sendFile(path.join(__dirname, 'ui', 'index.html'));
