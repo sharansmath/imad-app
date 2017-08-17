@@ -12,9 +12,9 @@ submit.onclick = function () {
             // Capture a list of names
             console.log('user logged in');
             alert('Logged in successfully');
-        } else (request.status === 403) {
-            alert('Username/password is incorrect')
-        } else (request.status === 5000) {
+        } else if (request.status === 403) {
+            alert('Username/password is incorrect');
+        } else if (request.status === 5000) {
             alert('Someothing went wrong');
         }
     };
