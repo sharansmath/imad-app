@@ -56,7 +56,7 @@ app.post('/login', function(req, res) {
           res.status(500).send(err.toString());
       } else {
           // check if any user is matched
-          if (result.rows.length == 0) {
+          if (result.rows.length === 0) {
               res.send(403).send('username/password is INVALID');
           } else {
               // Check password now
@@ -66,12 +66,12 @@ app.post('/login', function(req, res) {
               if (hashedPassword == dbString) {
                   res.send('Credentials are correct');
               } else {
-                  res.send(403).send('username/password WRONG............);
+                  res.send(403).send('username/password WRONG............');
               }
           }
           res.send('User created successfully' + username);
       }
-    })
+    });
 })
 
 
