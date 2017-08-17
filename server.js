@@ -60,7 +60,7 @@ app.post('/login', function(req, res) {
               res.send(403).send('username/password is INVALID');
           } else {
               // Check password now
-              var dbString = result.rows(0).password;
+              var dbString = result.rows[0].password;
               var salt = dbString.split('$')[2];
               var hashedPassword = has(password, salt); // Generate password and compare
               if (hashedPassword == dbString) {
