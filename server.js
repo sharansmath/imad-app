@@ -62,7 +62,7 @@ app.post('/login', function(req, res) {
               // Check password now
               var dbString = result.rows[0].password;
               var salt = dbString.split('$')[2];
-              var hashedPassword = has(password, salt); // Generate password and compare
+              var hashedPassword = hash(password, salt); // Generate password and compare
               if (hashedPassword == dbString) {
                   res.send('Credentials are correct');
               } else {
