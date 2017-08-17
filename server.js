@@ -94,6 +94,12 @@ app.get('/check-login', function(req, res) {
    }
 });
 
+app.get('/logout', function(req, res) {
+   delete req.session.auth;
+   res.send('You are Logged out');
+});
+
+
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
   //res.sendFile(path.join(__dirname, 'ui', 'index.html'));
