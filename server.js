@@ -69,6 +69,13 @@ app.post('/login', function(req, res) {
               var salt = dbString.split('$')[2];
               var hashedPassword = hash(password, salt); // Generate password and compare
               if (hashedPassword == dbString) {
+                  
+                  // set the session
+                  req.session.auth = {userId: result.rows[0].id};
+                  // set cookie with session id
+                  // internally on the server side, it maps session id to an object
+                  // { auth: {userId}}
+                  
                   res.send('Credentials are correct');
               } else {
                   res.send(403).send('username/password WRONG............');
@@ -79,6 +86,13 @@ app.post('/login', function(req, res) {
     });
 });
 
+app.get('/check-login', function(req, res) {
+   if (req.session && req.session.auth && req.session.auth.userId) {
+       res.send('You are logged in; ' + req.session.auth.userId.toString());
+   } else {
+       res.send('You are NOT logged in');
+   }
+});
 
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
