@@ -29,7 +29,7 @@ function hash(input, salt) {
 app.get('/hash/:input', function(req, res) {
     var hashedString = hash(req.params.input, 'some-randon-string');
     res.send(hashedString);
-})
+});
 
 app.post('/create-user', function(req, res) {
     // JSON request
@@ -43,8 +43,8 @@ app.post('/create-user', function(req, res) {
       } else {
           res.send('User created successfully' + username);
       }
-    })
-})
+    });
+});
 
 app.post('/login', function(req, res) {
     // JSON request
@@ -72,7 +72,7 @@ app.post('/login', function(req, res) {
           res.send('User created successfully' + username);
       }
     });
-})
+});
 
 
 var pool = new Pool(config);
